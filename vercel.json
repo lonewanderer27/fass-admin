@@ -10,10 +10,6 @@
     {
       "src": "/(.*)",
       "dest": "/api/index.php"
-    },
-    {
-      "src": "/(css|js|img|fonts)/(.*)",
-      "dest": "public/$1/$2"
     }
   ]
 }
