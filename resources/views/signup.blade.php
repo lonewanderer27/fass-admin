@@ -6,7 +6,7 @@
         <form class="flex flex-col mx-auto xs:w-full sm:w-96 gap-2">
             <label class="input input-bordered flex items-center gap-2">
                 Email
-                <input type="text" class="grow" placeholder="Enter your Email" />
+                <input type="email" class="grow" placeholder="Enter your Email" />
             </label>
             <label class="input input-bordered flex items-center gap-2 password-group">
                 Password
