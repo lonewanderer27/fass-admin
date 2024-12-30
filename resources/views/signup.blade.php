@@ -5,11 +5,11 @@
     <div class="flex justify-center items-center h-screen">
         <form class="flex flex-col mx-auto xs:w-full sm:w-96 gap-2">
             <label class="input input-bordered flex items-center gap-2">
-                Email
+                <div class="w-20">Email</div>
                 <input type="email" class="grow" placeholder="Enter your Email" />
             </label>
             <label class="input input-bordered flex items-center gap-2 password-group">
-                Password
+                <div class="w-20">Password</div>
                 <input type="password" class="grow" placeholder="Enter your Password" />
                 <svg id="eye--icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -24,8 +24,8 @@
                 </svg>
             </label>
             <label class="input input-bordered flex items-center gap-2 password-group">
-                Confirm Password
-                <input type="password" class="grow" placeholder="Enter your Password" />
+                <div class="w-20">Confirm</div>
+                <input type="password" class="grow" placeholder="Confirm your Password" />
                 <svg id="eye--icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke-width="1.5" stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -47,7 +47,7 @@
     </div>
 </x-layout>
 
-<script>
+<script lang="ts">
     // Select all password input groups
     const passwordGroups = document.querySelectorAll('.password-group');
     passwordGroups.forEach(group => {

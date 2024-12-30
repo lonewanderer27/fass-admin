@@ -5,11 +5,11 @@
     <div class="flex justify-center items-center h-screen">
         <form class="flex flex-col mx-auto xs:w-full sm:w-96 gap-2">
             <label class="input input-bordered flex items-center gap-2">
-                Email
+                <div class="w-20">Email</div>
                 <input type="email" class="grow" placeholder="Enter your Email" />
             </label>
             <label class="input input-bordered flex items-center gap-2">
-                Password
+                <div class="w-20">Password</div>
                 <input id="password" type="password" class="grow" placeholder="Enter your Password" />
                 <svg id="eye--icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                     stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -32,7 +32,7 @@
     </div>
 </x-layout>
 
-<script>
+<script lang="ts">
     const eyeIcon = document.getElementById("eye--icon");
     const eyeCloseIcon = document.getElementById("eye-slash--icon");
     const passInput = document.getElementById("password");
