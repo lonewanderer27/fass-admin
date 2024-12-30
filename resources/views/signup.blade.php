@@ -1,19 +1,26 @@
-<!-- use direct style here so that animations on local is consistent -->
+<!-- use inline style for view transitions so that animations on local is consistent -->
 <style>
     @view-transition {
         navigation: auto;
     }
+
+    #message {
+        view-transition-name: message;
+    }
+
+    #form {
+        view-transition-name: form;
+    }
 </style>
-@vite('resources/css/signup.css')
 <x-layout title="Signup">
     <x-slot:heading>
         Signup
     </x-slot:heading>
     <div class="flex items-center h-screen justify-center px-4">
-        <div class="flex flex-col md:flex-row md:gap-x-8 w-full md:w-2/3">
+        <div class="flex flex-col md:flex-row md:gap-x-8 w-full md:w-2/3 md:h-1/2">
             <!-- Left Section: Login Message -->
-            <div
-                class="rounded-2xl w-full flex flex-col items-center justify-center px-8 py-16 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+            <div id="message"
+                class="rounded-tl-xl rounded-bl-xl w-full flex flex-col items-center justify-center px-8 py-16 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
                 <p class="text-white text-3xl font-bold">
                     Welcome Back!
                 </p>
@@ -25,7 +32,7 @@
                 </a>
             </div>
             <!-- Right Section: Signup Form -->
-            <div class="w-full flex flex-col">
+            <div id="form" class="w-full flex flex-col">
                 <form class="flex flex-col w-full gap-2 px-4 py-16">
                     <p class="text-3xl font-bold text-center mb-5">
                         Create an Account
@@ -83,6 +90,21 @@
 </x-layout>
 
 <script lang="ts">
+    // Select all page navigation links (e.g., "Sign Up" or "Log In")
+    document.querySelectorAll("a[href='/signup'], a[href='/login']").forEach((link) => {
+        link.addEventListener("click", (event) => {
+            event.preventDefault(); // Prevent default navigation
+
+            const href = link.getAttribute("href"); // Get target URL
+
+            // Trigger View Transition
+            document.startViewTransition(() => {
+                window.location.href = href; // Navigate to the target page
+            });
+        });
+        console.log(link)
+    });
+
     // Select all password input groups
     const passwordGroups = document.querySelectorAll('.password-group');
     passwordGroups.forEach(group => {

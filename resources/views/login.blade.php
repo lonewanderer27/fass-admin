@@ -1,18 +1,25 @@
-<!-- use direct style here so that animations on local is consistent -->
+<!-- use inline style for view transitions so that animations on local is consistent -->
 <style>
     @view-transition {
         navigation: auto;
     }
+
+    #message {
+        view-transition-name: message;
+    }
+
+    #form {
+        view-transition-name: form;
+    }
 </style>
-@vite('resources/css/login.css')
 <x-layout title="Login">
     <x-slot:heading>
         Login
     </x-slot:heading>
     <div class="flex items-center h-screen justify-center px-4">
-        <div class="flex flex-col md:flex-row md:gap-x-8 w-full md:w-2/3">
+        <div class="flex flex-col md:flex-row md:gap-x-8 w-full md:w-2/3 md:h-1/2">
             <!-- Left Section: Login Form -->
-            <div class="w-full flex flex-col">
+            <div id="form" class="w-full flex flex-col">
                 <form class="flex flex-col w-full gap-2 px-4 py-16 ">
                     <p class="text-3xl font-bold text-center mb-5">
                         Log In
@@ -56,7 +63,7 @@
                 </form>
             </div>
             <!-- Right Section: Signup Message -->
-            <div class=" rounded-2xl items-center justify-center w-full gap-4 flex flex-col px-8 py-16 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+            <div id="message" class="rounded-tr-xl rounded-br-xl items-center justify-center w-full gap-4 flex flex-col px-8 py-16 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
                 <p class="text-white text-3xl font-bold">
                     Don't have an account?
                 </p>
