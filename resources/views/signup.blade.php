@@ -17,23 +17,23 @@
         Signup
     </x-slot:heading>
     <div class="flex items-center h-screen justify-center px-4">
-        <div class="flex flex-col md:flex-row md:gap-x-8 w-full md:w-2/3 md:h-1/2">
+        <div class="flex flex-col md:flex-row w-full md:w-2/3 md:h-1/2 shadow-xl">
             <!-- Left Section: Login Message -->
             <div id="message"
-                class="rounded-tl-xl rounded-bl-xl w-full flex flex-col items-center justify-center px-8 py-16 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-                <p class="text-white text-3xl font-bold">
+                class="gap-4 rounded-tl-xl rounded-bl-xl w-full flex flex-col items-center justify-center px-8 py-16 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+                <p class="text-white text-3xl font-bold message-item">
                     Welcome Back!
                 </p>
-                <p class="text-white mt-2 font-semibold">
+                <p class="text-white font-semibold message-item">
                     Log in and continue your fass journey.
                 </p>
-                <a href="/login" class="btn btn-outline btn-neutral px-10 mt-4">
+                <a href="/login" class="btn btn-outline btn-neutral px-10 mt-4 message-item">
                     Log In
                 </a>
             </div>
             <!-- Right Section: Signup Form -->
             <div id="form" class="w-full flex flex-col">
-                <form class="flex flex-col w-full gap-2 px-4 py-16">
+                <form class="flex flex-col w-full gap-2 px-8 py-16">
                     <p class="text-3xl font-bold text-center mb-5">
                         Create an Account
                     </p>
