@@ -1,14 +1,18 @@
 {
     "compilerOptions": {
-        "target": "esnext",
-        "module": "esnext",
+        "target": "es5", // Target ES5 for older browser compatibility.
+        "module": "esnext", // Keep ESNext modules for better tree-shaking with modern bundlers like Vite.
+        "lib": ["dom", "dom.iterable", "esnext"], // Include DOM and ES features.
         "moduleResolution": "node",
-        "strict": true,
+        "strict": true, // Enable strict type checking.
         "jsx": "preserve",
         "esModuleInterop": true,
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true
+        "skipLibCheck": true, // Skip type checks for library files.
+        "forceConsistentCasingInFileNames": true,
+        "downlevelIteration": true, // Enable down-leveling of iteration for older environments.
+        "outDir": "dist", // Ensure compiled files are output to a specific folder (optional).
+        "sourceMap": true // Generate source maps for debugging (optional).
     },
-    "include": ["resources/**/*.ts"],
+    "include": ["resources/**/*.ts", "resources/**/*.d.ts"],
     "exclude": ["node_modules"]
 }
