@@ -9,9 +9,8 @@ use App\Models\OrganizerMemberInviteCode;
 use App\Models\User;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Hashids\Hashids;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
+use Sqids\Sqids;
 
 class DatabaseSeeder extends Seeder
 {
@@ -36,12 +35,13 @@ class DatabaseSeeder extends Seeder
             'phone_no' => '02-8524-2011'
         ]);
 
-        $invite_code = (new Hashids("organizerMemberInviteCode", 6))->encode($user->id);
+        // Instantiate a squid for generating unique invite codes
+        $sqids = new Sqids(minLength: 6);
 
         // Create a unique invite code for the new user
         $organizerMemberInviteCode = OrganizerMemberInviteCode::create([
             'organizer_id' => $organizer->id,
-            'invite_code' => $invite_code,
+            'invite_code' => $sqids->encode($user->id),
             'status' => 'used'
         ]);
 
