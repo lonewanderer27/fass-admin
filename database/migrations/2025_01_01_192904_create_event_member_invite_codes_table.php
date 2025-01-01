@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('event_member_invite_codes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('organizer_id')->constrained('organizers')->onDelete('cascade');
+            $table->foreignId('event_id')->constrained()->onDelete('cascade');
             $table->string('invite_code')->unique();
             $table->enum('status', ['active', 'used', 'invalid'])->default('active');
             $table->timestamps();
 
             // Unique constraint
-            $table->unique(['organizer_id', 'invite_code']);
+            $table->unique(['event_id', 'invite_code']);
         });
     }
 

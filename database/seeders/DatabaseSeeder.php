@@ -5,9 +5,11 @@ namespace Database\Seeders;
 use App\Models\Event;
 use App\Models\Organizer;
 use App\Models\OrganizerMember;
+use App\Models\OrganizerMemberInviteCode;
 use App\Models\User;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Hashids\Hashids;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -34,11 +36,21 @@ class DatabaseSeeder extends Seeder
             'phone_no' => '02-8524-2011'
         ]);
 
+        $invite_code = (new Hashids("organizerMemberInviteCode", 6))->encode($user->id);
+
+        // Create a unique invite code for the new user
+        $organizerMemberInviteCode = OrganizerMemberInviteCode::create([
+            'organizer_id' => $organizer->id,
+            'invite_code' => $invite_code,
+            'status' => 'used'
+        ]);
+
         // Create an organizer member associated with the user and organizer
         $organizerMember = OrganizerMember::create([
             'user_id' => $user->id,
             'organizer_id' => $organizer->id,
             'role' => 'admin',
+            'invite_code_id' => $organizerMemberInviteCode->id
         ]);
 
         // Predefined events

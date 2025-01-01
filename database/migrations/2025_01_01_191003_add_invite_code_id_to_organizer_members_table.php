@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('organizer_members', function (Blueprint $table) {
             $table
                 ->foreignId('invite_code_id')
-                ->constrained('organizer_members_invite_codes')
+                ->constrained('organizer_member_invite_codes')
                 ->onDelete('cascade');
         });
     }
