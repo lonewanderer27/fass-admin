@@ -1,4 +1,4 @@
-<x-layout title="Events">
+<x-layout title="Events" :showNavBar="true">
     <x-slot:heading>
         Events
     </x-slot:heading>
