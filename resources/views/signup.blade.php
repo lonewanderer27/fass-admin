@@ -12,12 +12,12 @@
         view-transition-name: form;
     }
 </style>
-<x-layout title="Signup">
+<x-layout title="Signup" :showNavBar="false">
     <x-slot:heading>
         Signup
     </x-slot:heading>
     <div class="flex items-center h-screen justify-center px-4">
-        <div class="flex flex-col md:flex-row w-full md:w-2/3 md:h-1/2 shadow-xl">
+        <div class="flex flex-col md:flex-row w-full md:w-2/3 md:h-1/2 shadow-xl rounded-xl">
             <!-- Left Section: Login Message -->
             <div id="message"
                 class="gap-4 rounded-tl-xl rounded-bl-xl w-full flex flex-col items-center justify-center px-8 py-16 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
