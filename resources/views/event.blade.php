@@ -3,7 +3,7 @@
         Event
     </x-slot:heading>
     <div>
-        <p>{{ $event["title"] }}</p>
+        <p>{{ $event["name"] }}</p>
         <p>{{ $event["description"] }}</p>
         <p>{{ $event["date"] }}</p>
         <p>{{ $event["time"] }}</p>

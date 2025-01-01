@@ -73,6 +73,7 @@ use Illuminate\Support\Arr;
 //        ];
 
 class Event extends Model {
+    use HasFactory;
     protected $table = 'events';
     protected $fillable = [
         'name',
@@ -91,17 +92,5 @@ class Event extends Model {
     }
     public function creatorMember() {
         return $this->belongsTo(OrganizerMember::class, 'creator_member_id');
-    }
-
-    use HasFactory;
-
-    public static function findEvent($id): array {
-        $event = Arr::first((array)static::all(), fn($event) => $event['id'] == $id);
-
-        if (!$event) {
-            abort(404);
-        }
-
-        return $event;
     }
 }

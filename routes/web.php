@@ -21,7 +21,7 @@ Route::get('/signup', function () {
 });
 
 Route::get('/events/{id}', function ($id) {
-    $event = Event::findEvent($id);
+    $event = Event::find($id);
 
     return view('event', [
         'event' => $event
