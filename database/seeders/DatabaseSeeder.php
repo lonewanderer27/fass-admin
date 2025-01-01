@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         // Create a unique invite code for the new user
         $organizerMemberInviteCode = OrganizerMemberInviteCode::create([
             'organizer_id' => $organizer->id,
-            'invite_code' => $sqids->encode($user->id),
+            'invite_code' => $sqids->encode([$user->id]),
             'status' => 'used'
         ]);
 
