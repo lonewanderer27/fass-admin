@@ -16,4 +16,7 @@
             </div>
         </div>
     @endforeach
+    <div class="p-8">
+        {{$events->links()}}
+    </div>
 </x-layout>
