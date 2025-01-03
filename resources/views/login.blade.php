@@ -13,7 +13,7 @@
     }
 </style>
 
-<x-layout title="Login" :showNavBar="false">
+<x-layout title="Login">
     <x-slot:heading>
         Login
     </x-slot:heading>

@@ -12,7 +12,7 @@
         view-transition-name: form;
     }
 </style>
-<x-layout title="Signup" :showNavBar="false">
+<x-layout title="Signup">
     <x-slot:heading>
         Signup
     </x-slot:heading>

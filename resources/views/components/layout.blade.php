@@ -1,5 +1,4 @@
-@props(['showNavBar' => false, 'show_heading' => false])
-
+@props(['show_navbar' => false, 'show_heading' => false])
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -22,7 +21,7 @@
     @endif
 </head>
 <body {{ $attributes }}>
-@if($showNavBar)
+@if($show_navbar)
     <x-navbar/>
 @endif
 @if($show_heading)
