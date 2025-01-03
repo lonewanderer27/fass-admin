@@ -31,6 +31,14 @@ Route::get('/events/{id}', function ($id) {
     ]);
 });
 
+Route::get('/events', function () {
+    $events = Event::with('organizer')->paginate(9);
+
+    return view('events', [
+        'events' => $events
+    ]);
+});
+
 Route::get('/organizers/{id}', function ($id) {
     $organizer = Organizer::find($id);
     $members = $organizer->members()->take(3)->get();
@@ -43,11 +51,11 @@ Route::get('/organizers/{id}', function ($id) {
     ]);
 });
 
-Route::get('/events', function () {
-    $events = Event::with('organizer')->get();
+Route::get('/organizers', function($id) {
+    $organizers = Organizer::with('members')->paginate(9);
 
-    return view('events', [
-        'events' => $events
+    return view('organizers', [
+        'organizers' => $organizers
     ]);
 });
 
