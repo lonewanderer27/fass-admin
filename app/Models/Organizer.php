@@ -14,6 +14,7 @@ class Organizer extends Model
         'name',
         'phone_no',
         'email',
+        'description',
         'avatar_url',
         'cover_url',
     ];
