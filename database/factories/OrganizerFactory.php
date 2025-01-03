@@ -13,6 +13,7 @@ class OrganizerFactory extends Factory
 {
     protected ?string $name;
     protected ?string $phone_no;
+    protected ?string $email;
 
     /**
      * Define the model's default state.
@@ -47,7 +48,8 @@ class OrganizerFactory extends Factory
 
         return [
             'name' => $this->name ??= $base_name . " " . "(" . implode("", $abbv) . ")",
-            'phone_no' => $this->phone_no ??= fake()->e164PhoneNumber()
+            'phone_no' => $this->phone_no ??= fake()->e164PhoneNumber(),
+            'email' => $this->email ??= strtolower(fake()->firstName() . "." . implode("", $abbv) . "@" . fake()->freeEmailDomain())
         ];
     }
 }

@@ -13,6 +13,7 @@ class Organizer extends Model
     protected $fillable = [
         'name',
         'phone_no',
+        'email',
         'avatar_url',
         'cover_url',
     ];

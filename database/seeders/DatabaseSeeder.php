@@ -32,7 +32,8 @@ class DatabaseSeeder extends Seeder
         // Create an organizer related to Adamson University
         $organizer = Organizer::create([
             'name' => 'Adamson University Cultural Department',
-            'phone_no' => '02-8524-2011'
+            'phone_no' => '02-8524-2011',
+            'email' => 'aucd.mail@adamson.edu.ph'
         ]);
 
         // Instantiate a squid for generating unique invite codes
