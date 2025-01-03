@@ -51,7 +51,7 @@ Route::get('/organizers/{id}', function ($id) {
     ]);
 });
 
-Route::get('/organizers', function($id) {
+Route::get('/organizers', function() {
     $organizers = Organizer::with('members')->paginate(9);
 
     return view('organizers', [
