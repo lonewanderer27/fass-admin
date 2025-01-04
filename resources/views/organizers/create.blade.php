@@ -24,11 +24,14 @@
                         @enderror
                     </div>
 
-                    <div class="sm:col-span-4">
+                    <div class="sm:col-span-4  max-w-xs">
                         <label for="phone_no" class="block text-sm/6 font-medium text-gray-900">Phone No</label>
-                        <input id="phone_no" name="phone_no" type="text" placeholder="+63 912 345 6789" required
-                               value="{{ old('phone_no') }}"
-                               class="input input-bordered w-full max-w-xs mt-2 @error('phone_no') input-error @enderror"/>
+                        <div class="join mt-2 w-full">
+                            <div class="flex join-item input input-bordered items-center">+63</div>
+                            <input id="phone_no" name="phone_no" type="text" placeholder="912 345 6789" required
+                                   value="{{ old('phone_no') }}"
+                                   class="input input-bordered join-item w-full @error('phone_no') input-error @enderror"/>
+                        </div>
                         @error('phone_no')
                         <div class="label">
                             <span class="label-text-alt text-error">{{ $message }}</span>
