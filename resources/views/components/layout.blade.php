@@ -1,4 +1,4 @@
-@props(['show_navbar' => false, 'show_heading' => false])
+@props(['title'=> 'Fass', 'show_navbar' => false, 'show_heading' => false])
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
-    <title>{{ $title ?? "Fass" }}</title>
+    <title>{{ $title }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">

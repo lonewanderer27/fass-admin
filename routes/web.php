@@ -72,8 +72,44 @@ Route::post('/organizers', function() {
     return redirect('/organizers');
 });
 
+Route::delete('/organizers/{org}', function (Organizer $org) {
+    // TODO: authorize the delete organizer request
+
+    // actually delete the organization
+    $org->deleteOrFail();
+
+    // return and redirect to organizers page
+    return redirect('/organizers');
+});
+
+Route::patch('/organizers/{org}', function (Organizer $org) {
+    // validate the request
+    request()->validate([
+        // third param allows us to exclude the rule of unique to the org id
+        // which allows the org name to stay the same
+        // in case the user decided to not edit it
+        'name' => ['required',  'unique:organizers,name,' . $org->id, 'min:3'],
+        'phone_no' => ['required', 'size:10'],
+        'description' => ['nullable'],
+        'email' => ['nullable'],
+        'avatar_url' => ['nullable'],
+        'cover_url' => ['nullable']
+    ]);
+
+    // TODO: authorize the edit organizer request
+
+    // filter out the null values
+    $filtered_values = array_filter(request()->all(), fn($val) => !is_null($val));
+
+    // actually update the organizer
+    $org->updateOrFail($filtered_values);
+
+    // return and redirect to the organizer page
+    return redirect("/organizers/$org->id");
+});
+
 Route::get('/organizers/{id}', function ($id) {
-    $organizer = Organizer::find($id);
+    $organizer = Organizer::findOrFail($id);
     $members = $organizer->members()->take(3)->get();
     $events = $organizer->events()->take(3)->get();
 
@@ -81,6 +117,12 @@ Route::get('/organizers/{id}', function ($id) {
         'organizer' => $organizer,
         'members' => $members,
         'events' => $events
+    ]);
+});
+
+Route::get('/organizers/{org}/edit', function(Organizer $org) {
+    return view('organizers.edit', [
+        'organizer' => $org
     ]);
 });
 
