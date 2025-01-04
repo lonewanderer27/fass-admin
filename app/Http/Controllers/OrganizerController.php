@@ -63,10 +63,10 @@ class OrganizerController extends Controller
         $filtered_values = array_filter($request->all(), fn($val) => !is_null($val));
 
         // create the new organizer
-        Organizer::create($filtered_values);
+        $organizer = Organizer::create($filtered_values);
 
-        // return and redirect to organizers page
-        return redirect('/organizers');
+        // return and redirect to organizer page
+        return redirect("/organizers/$organizer->id");
     }
 
     // action: update an organizer

@@ -108,7 +108,7 @@
         </div>
 
         <div class="mt-6 flex items-center justify-end gap-x-6">
-            <button type="button" class="btn">Cancel</button>
+            <a type="button" class="btn" href="/organizers">Cancel</a>
             <button type="submit" class="btn btn-primary">Save</button>
         </div>
     </form>
