@@ -53,7 +53,14 @@ Route::get('/organizers/create', function() {
 
 Route::post('/organizers', function() {
     // validate request
-//    dd(request()->all());
+    request()->validate([
+        'name' => ['required', 'unique:organizers', 'min:3'],
+        'phone_no' => ['required'],
+        'description' => ['nullable'],
+        'email' => ['nullable'],
+        'avatar_url' => ['nullable'],
+        'cover_url' => ['nullable']
+    ]);
 
     // filter out the null values
     $filtered_values = array_filter(request()->all(), fn($val) => !is_null($val));

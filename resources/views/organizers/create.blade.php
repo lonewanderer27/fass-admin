@@ -1,36 +1,64 @@
-<x-layout title="Create Organization" :show_navbar="true">
-    <form class="p-8" method="POST" action="/organizers">
+<x-layout title="Create Organization" :show_navbar="true" :show_heading="true">
+    <x-slot:heading>
+        New Organization
+    </x-slot:heading>
+    <form class="p-6 lg:p-8" method="POST" action="/organizers">
         @csrf
 
         <div class="space-y-12">
             <div class="border-b border-gray-900/10 pb-12">
-                <h2 class="text-base/7 font-semibold text-gray-900">Create a new Organization</h2>
+                <h2 class="text-base/7 font-semibold text-gray-900">Create an Organization</h2>
                 <p class="mt-1 text-sm/6 text-gray-600">We just need a few information from you</p>
 
                 <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div class="sm:col-span-4">
                         <label for="name" class="block text-sm/6 font-medium text-gray-900">Name</label>
-                        <input id="name" name="name" type="text" placeholder="Company or Organization Name" required
-                               class="input input-bordered w-full max-w-xs mt-2"/>
+                        <input id="name" name="name" type="text"
+                               placeholder="Company or Organization Name" required
+                               value="{{ old('name') }}"
+                               class="input input-bordered w-full max-w-xs mt-2 @error('name') input-error @enderror"/>
+                        @error('name')
+                        <div class="label">
+                            <span class="label-text-alt text-error">{{ $message }}</span>
+                        </div>
+                        @enderror
                     </div>
 
                     <div class="sm:col-span-4">
                         <label for="phone_no" class="block text-sm/6 font-medium text-gray-900">Phone No</label>
                         <input id="phone_no" name="phone_no" type="text" placeholder="+63 912 345 6789" required
-                               class="input input-bordered w-full max-w-xs mt-2"/>
+                               value="{{ old('phone_no') }}"
+                               class="input input-bordered w-full max-w-xs mt-2 @error('phone_no') input-error @enderror"/>
+                        @error('phone_no')
+                        <div class="label">
+                            <span class="label-text-alt text-error">{{ $message }}</span>
+                        </div>
+                        @enderror
                     </div>
 
                     <div class="sm:col-span-4">
                         <label for="email" class="block text-sm/6 font-medium text-gray-900">Email</label>
                         <input id="email" name="email" type="email" placeholder="contact@organization.ph"
-                               class="input input-bordered w-full max-w-xs mt-2"/>
+                               class="input input-bordered w-full max-w-xs mt-2 @error('email') input-error @enderror"
+                               value="{{ old('email') }}"/>
+                        @error('email')
+                        <div class="label">
+                            <span class="label-text-alt text-error">{{ $message }}</span>
+                        </div>
+                        @enderror
                     </div>
 
                     <div class="col-span-full">
                         <label for="description" class="block text-sm/6 font-medium text-gray-900">About</label>
-                        <textarea id="description" name="description" class="textarea textarea-bordered h-24 mt-2 w-full"
-                                  placeholder="Bio"></textarea>
+                        <textarea id="description" name="description"
+                                  class="textarea textarea-bordered h-24 mt-2 w-full  @error('description') input-error @enderror"
+                                  placeholder="Bio">{{ old('description') }}</textarea>
                         <p class="mt-3 text-sm/6 text-gray-600">Briefly describe your organization.</p>
+                        @error('description')
+                        <div class="label">
+                            <span class="label-text-alt text-error">{{ $message }}</span>
+                        </div>
+                        @enderror
                     </div>
 
                     <div class="col-span-full">
