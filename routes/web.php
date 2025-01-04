@@ -39,6 +39,18 @@ Route::get('/events', function () {
     ]);
 });
 
+Route::get('/organizers', function() {
+    $organizers = Organizer::paginate(9);
+
+    return view('organizers.index', [
+        'organizers' => $organizers
+    ]);
+});
+
+Route::get('/organizers/create', function() {
+    return view('organizers.create');
+});
+
 Route::get('/organizers/{id}', function ($id) {
     $organizer = Organizer::find($id);
     $members = $organizer->members()->take(3)->get();
@@ -48,14 +60,6 @@ Route::get('/organizers/{id}', function ($id) {
         'organizer' => $organizer,
         'members' => $members,
         'events' => $events
-    ]);
-});
-
-Route::get('/organizers', function() {
-    $organizers = Organizer::paginate(9);
-
-    return view('organizers.index', [
-        'organizers' => $organizers
     ]);
 });
 

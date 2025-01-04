@@ -20,6 +20,6 @@
         </div>
     @endforeach
     <div class="p-8">
-        {{$events->links()}}
+        {{$organizers->links()}}
     </div>
 </x-layout>
