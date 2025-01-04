@@ -16,6 +16,7 @@
                         <input id="name" name="name" type="text"
                                placeholder="Company or Organization Name" required
                                value="{{ old('name') }}"
+                               minlength="3"
                                class="input input-bordered w-full max-w-xs mt-2 @error('name') input-error @enderror"/>
                         @error('name')
                         <div class="label">
