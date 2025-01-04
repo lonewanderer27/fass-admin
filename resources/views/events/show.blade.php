@@ -8,11 +8,13 @@
         <p><strong>Starts at: </strong>{{ $event["start_datetime"] }}</p>
         <p><strong>Ends at: </strong>{{ $event["end_datetime"] }}</p>
         <p><strong>Room Capacity: </strong>{{ $event->max_attendees }}</p>
-        <p><strong>Organizer: </strong>{{ $event->organizer->name }}</p>
         <p><strong>Organizer: </strong>
             <a class="hover:underline" href="/organizers/{{$event->organizer->id}}">
                 {{ $event->organizer->name }}
             </a>
         </p>
+        <div class="mt-6 flex items-center gap-x-6">
+            <a class="btn  btn-secondary" href="/events/{{$event->id}}/edit">Edit</a>
+        </div>
     </div>
 </x-layout>
