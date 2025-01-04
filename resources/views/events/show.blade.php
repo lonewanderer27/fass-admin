@@ -9,5 +9,10 @@
         <p><strong>Ends at: </strong>{{ $event["end_datetime"] }}</p>
         <p><strong>Room Capacity: </strong>{{ $event->max_attendees }}</p>
         <p><strong>Organizer: </strong>{{ $event->organizer->name }}</p>
+        <p><strong>Organizer: </strong>
+            <a class="hover:underline" href="/organizers/{{$event->organizer->id}}">
+                {{ $event->organizer->name }}
+            </a>
+        </p>
     </div>
 </x-layout>
