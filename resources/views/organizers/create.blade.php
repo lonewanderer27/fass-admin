@@ -28,8 +28,10 @@
                         <label for="phone_no" class="block text-sm/6 font-medium text-gray-900">Phone No</label>
                         <div class="join mt-2 w-full">
                             <div class="flex join-item input input-bordered items-center">+63</div>
-                            <input id="phone_no" name="phone_no" type="text" placeholder="912 345 6789" required
+                            <input id="phone_no" name="phone_no" type="number" placeholder="912 345 6789" required
                                    value="{{ old('phone_no') }}"
+                                   minlength="10"
+                                   maxlength="10"
                                    class="input input-bordered join-item w-full @error('phone_no') input-error @enderror"/>
                         </div>
                         @error('phone_no')

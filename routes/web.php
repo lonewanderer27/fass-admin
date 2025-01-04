@@ -55,7 +55,7 @@ Route::post('/organizers', function() {
     // validate request
     request()->validate([
         'name' => ['required', 'unique:organizers', 'min:3'],
-        'phone_no' => ['required'],
+        'phone_no' => ['required', 'size:10'],
         'description' => ['nullable'],
         'email' => ['nullable'],
         'avatar_url' => ['nullable'],
