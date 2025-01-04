@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\OrganizerController;
 use App\Models\Event;
 use Illuminate\Support\Facades\Route;
@@ -19,21 +20,9 @@ Route::get('/signup', function () {
     return view('signup');
 });
 
-Route::get('/events/{event}', function (Event $event) {
-    $organizer = $event->organizer;
-
-    return view('events.show', [
-        'event' => $event,
-        'organizer' => $organizer
-    ]);
-});
-
-Route::get('/events', function () {
-    $events = Event::with('organizer')->paginate(9);
-
-    return view('events.index', [
-        'events' => $events
-    ]);
+Route::controller(EventController::class)->group(function () {
+    Route::get('/events', 'show');                  // page
+    Route::get('/events/{event}', 'index');         // page
 });
 
 Route::controller(OrganizerController::class)->group(function () {
