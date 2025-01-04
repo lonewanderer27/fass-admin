@@ -1,35 +1,36 @@
 <x-layout title="Create Organization" :show_navbar="true">
-    <form class="p-8">
+    <form class="p-8" method="POST" action="/organizers">
+        @csrf
+
         <div class="space-y-12">
             <div class="border-b border-gray-900/10 pb-12">
-                <h2 class="text-base/7 font-semibold text-gray-900">Create an Organization</h2>
-                <p class="mt-1 text-sm/6 text-gray-600">This information will be displayed publicly so be careful what
-                    you share.</p>
+                <h2 class="text-base/7 font-semibold text-gray-900">Create a new Organization</h2>
+                <p class="mt-1 text-sm/6 text-gray-600">We just need a few information from you</p>
 
                 <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div class="sm:col-span-4">
                         <label for="name" class="block text-sm/6 font-medium text-gray-900">Name</label>
-                        <input id="name" name="name" type="text" placeholder="Type here"
+                        <input id="name" name="name" type="text" placeholder="Company or Organization Name" required
                                class="input input-bordered w-full max-w-xs mt-2"/>
                     </div>
 
                     <div class="sm:col-span-4">
                         <label for="phone_no" class="block text-sm/6 font-medium text-gray-900">Phone No</label>
-                        <input id="phone_no" name="phone_no" type="text" placeholder="Type here"
+                        <input id="phone_no" name="phone_no" type="text" placeholder="+63 912 345 6789" required
                                class="input input-bordered w-full max-w-xs mt-2"/>
                     </div>
 
                     <div class="sm:col-span-4">
                         <label for="email" class="block text-sm/6 font-medium text-gray-900">Email</label>
-                        <input id="email" name="email" type="email" placeholder="Type here"
+                        <input id="email" name="email" type="email" placeholder="contact@organization.ph"
                                class="input input-bordered w-full max-w-xs mt-2"/>
                     </div>
 
                     <div class="col-span-full">
-                        <label for="about" class="block text-sm/6 font-medium text-gray-900">About</label>
-                        <textarea id="about" name="description" class="textarea textarea-bordered h-24 mt-2 w-full"
+                        <label for="description" class="block text-sm/6 font-medium text-gray-900">About</label>
+                        <textarea id="description" name="description" class="textarea textarea-bordered h-24 mt-2 w-full"
                                   placeholder="Bio"></textarea>
-                        <p class="mt-3 text-sm/6 text-gray-600">Write a few sentences about the organization.</p>
+                        <p class="mt-3 text-sm/6 text-gray-600">Briefly describe your organization.</p>
                     </div>
 
                     <div class="col-span-full">

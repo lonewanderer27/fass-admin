@@ -51,6 +51,20 @@ Route::get('/organizers/create', function() {
     return view('organizers.create');
 });
 
+Route::post('/organizers', function() {
+    // validate request
+//    dd(request()->all());
+
+    // filter out the null values
+    $filtered_values = array_filter(request()->all(), fn($val) => !is_null($val));
+
+    // create the new organizer
+    Organizer::create($filtered_values);
+
+    // return and redirect to organizers page
+    return redirect('/organizers');
+});
+
 Route::get('/organizers/{id}', function ($id) {
     $organizer = Organizer::find($id);
     $members = $organizer->members()->take(3)->get();
