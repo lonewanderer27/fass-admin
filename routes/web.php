@@ -21,8 +21,7 @@ Route::get('/signup', function () {
     return view('signup');
 });
 
-Route::get('/events/{id}', function ($id) {
-    $event = Event::find($id);
+Route::get('/events/{event}', function (Event $event) {
     $organizer = $event->organizer;
 
     return view('events.show', [
@@ -108,13 +107,12 @@ Route::patch('/organizers/{org}', function (Organizer $org) {
     return redirect("/organizers/$org->id");
 });
 
-Route::get('/organizers/{id}', function ($id) {
-    $organizer = Organizer::findOrFail($id);
-    $members = $organizer->members()->take(3)->get();
-    $events = $organizer->events()->take(3)->get();
+Route::get('/organizers/{org}', function (Organizer $org) {
+    $members = $org->members()->take(3)->get();
+    $events = $org->events()->take(3)->get();
 
     return view('organizers.show', [
-        'organizer' => $organizer,
+        'organizer' => $org,
         'members' => $members,
         'events' => $events
     ]);
