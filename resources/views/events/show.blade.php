@@ -1,12 +1,13 @@
 <x-layout title="Event" :show_navbar="true" :show_heading="true">
     <x-slot:heading>
-        Event
+        {{ $event["name"] }}
     </x-slot:heading>
-    <div>
-        <p>{{ $event["name"] }}</p>
-        <p>{{ $event["description"] }}</p>
-        <p>{{ $event["date"] }}</p>
-        <p>{{ $event["time"] }}</p>
-        <p>{{ $event["location"] }}</p>
+    <div class="p-6 lg:p-8">
+        <p><strong>Description: </strong>{{ $event["description"] }}</p>
+        <p><strong>Venue: </strong>{{ $event["location"] }}</p>
+        <p><strong>Starts at: </strong>{{ $event["start_datetime"] }}</p>
+        <p><strong>Ends at: </strong>{{ $event["end_datetime"] }}</p>
+        <p><strong>Room Capacity: </strong>{{ $event->max_attendees }}</p>
+        <p><strong>Organizer: </strong>{{ $event->organizer->name }}</p>
     </div>
 </x-layout>
