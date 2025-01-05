@@ -89,14 +89,14 @@
     const passInput = document.getElementById("password");
 
     function showPass() {
-        eyeCloseIcon.style.display = "none";
-        eyeIcon.style.display = "block";
+        eyeCloseIcon.style.display = "block";
+        eyeIcon.style.display = "none";
         passInput.setAttribute("type", "text");
     }
 
     function hidePass() {
-        eyeCloseIcon.style.display = "block";
-        eyeIcon.style.display = "none";
+        eyeCloseIcon.style.display = "none";
+        eyeIcon.style.display = "block";
         passInput.setAttribute("type", "password");
     }
 

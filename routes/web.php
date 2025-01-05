@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrganizerController;
-use App\Models\Event;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 
@@ -12,12 +13,12 @@ Route::get('/', function () {
 
 Route::view('/welcome', 'welcome');
 
-Route::get('/login', function () {
-    return view('login');
+Route::controller(LoginController::class)->group(function () {
+    Route::get('/login', 'index');  // form page
 });
 
-Route::get('/signup', function () {
-    return view('signup');
+Route::controller(RegisterController::class)->group(function () {
+    Route::get('/signup', 'index'); // form page
 });
 
 Route::controller(EventController::class)->group(function () {
