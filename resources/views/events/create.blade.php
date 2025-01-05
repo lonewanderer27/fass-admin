@@ -1,12 +1,3 @@
-@if ($errors->any())
-    <div class="alert alert-error">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
 <x-layout title="Create Organization" :show_navbar="true" :show_heading="true">
     <x-slot:heading>
         New Event
