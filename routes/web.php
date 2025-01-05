@@ -19,6 +19,7 @@ Route::controller(LoginController::class)->group(function () {
 
 Route::controller(RegisterController::class)->group(function () {
     Route::get('/signup', 'index'); // form page
+    Route::post('/signup', 'store');// form action
 });
 
 Route::controller(EventController::class)->group(function () {
