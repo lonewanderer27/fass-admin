@@ -28,8 +28,7 @@
                     Log in
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                          stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                              d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
                     </svg>
                 </a>
             @endguest
@@ -47,13 +46,30 @@
 
             @guest
                 <ul tabindex="0" class="dropdown-content menu z-[1] bg-base-200 p-4 rounded-box shadow w-56 gap-2">
-                    <li><a>Create Account</a></li>
-                    <a class="btn btn-primary btn-sm">
+                    <li><a href="/signup">Create Account</a></li>
+                    <a class="btn btn-primary btn-sm" href="/login">
                         Log in
-                        <i class="fa fa-arrow-right text-xs" aria-hidden="true"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                             stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+                        </svg>
                     </a>
                 </ul>
             @endguest
+
+            @auth
+                <ul tabindex="0" class="dropdown-content menu z-[1] bg-base-200 p-4 rounded-box shadow w-56 gap-2">
+                    <a class="btn btn-primary btn-sm">
+                        Log out
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                             stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+                        </svg>
+                    </a>
+                </ul>
+            @endauth
         </div>
     </nav>
 </nav>
