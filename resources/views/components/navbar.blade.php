@@ -1,76 +1,59 @@
-<nav class="navbar bg-neutral text-neutral-content">
-    <div class="navbar-start">
-        <div class="dropdown">
-            <div tabIndex={0} role="button" class="btn btn-ghost lg:hidden">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M4 6h16M4 12h8m-8 6h16" />
-                </svg>
-            </div>
-            <ul
-                tabIndex={0}
-                class="menu menu-sm dropdown-content  rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                <li>
-                    <x-navlink href="/" :active="request()->routeIs('home')">
-                        Home
-                    </x-navlink>
-                </li>
-                <li>
-                    <a>More</a>
-                    <ul class="p-2 text-slate-900">
-                        <li>
-                            <x-navlink href="/login" :active="request()->routeIs('login')">
-                                Login
-                            </x-navlink>
-                        </li>
-                        <li>
-                            <x-navlink href="/signup" :active="request()->routeIs('signup')">
-                                Signup
-                            </x-navlink>
-                        </li>
-                    </ul>
-                </li>
-{{--                <li><a>Item 3</a></li>--}}
-            </ul>
+<nav class="flex flex-col">
+    <!-- Top navbar (always visible) -->
+    <nav class="navbar justify-between gap-4 bg-base-300">
+        <!-- Logo -->
+        <a class="btn btn-ghost text-lg"
+           href="/"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h8m-8 6h16"/>
+            </svg>
+            Fass
+        </a>
+
+        <!-- Menu (Desktop) -->
+        <div class="shrink-0 hidden md:flex gap-2">
+            @guest
+                <a class="btn btn-sm btn-ghost" href="/signup">Create Account</a>
+                <a class="btn btn-sm btn-primary" href="/login">
+                    Log in
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                         stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"/>
+                    </svg>
+                </a>
+            @endguest
         </div>
-        <a class="btn btn-ghost text-xl">Fass</a>
-    </div>
-    <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal px-1">
-            <li>
-                <x-navlink href="/" :active="request()->routeIs('/')">
-                    Home
-                </x-navlink>
-            </li>
-            <li>
-                <details>
-                    <summary>More</summary>
-                    <ul class="p-2 text-slate-900 ">
-                        <li>
-                            <x-navlink href="/login" :active="request()->routeIs('login')">
-                                Login
-                            </x-navlink>
-                        </li>
-                        <li>
-                            <x-navlink href="/signup" :active="request()->routeIs('signup')">
-                                Signup
-                            </x-navlink>
-                        </li>
-                    </ul>
-                </details>
-            </li>
-{{--            <li><a>Item 3</a></li>--}}
-        </ul>
-    </div>
-    <div class="navbar-end">
-        <a class="btn">Button</a>
-    </div>
+
+        <!-- Menu (Mobile) -->
+        <div class="dropdown dropdown-end md:hidden">
+            <button class="btn btn-ghost">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                </svg>
+            </button>
+
+            @guest
+                <ul tabindex="0" class="dropdown-content menu z-[1] bg-base-200 p-4 rounded-box shadow w-56 gap-2">
+                    <li><a>Create Account</a></li>
+                    <a class="btn btn-primary btn-sm">
+                        Log in
+                        <i class="fa fa-arrow-right text-xs" aria-hidden="true"></i>
+                    </a>
+                </ul>
+            @endguest
+        </div>
+    </nav>
 </nav>

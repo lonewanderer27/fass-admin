@@ -18,7 +18,7 @@
         Login
     </x-slot:heading>
     <div class="flex items-center h-screen justify-center px-4">
-        <div class="flex flex-col md:flex-row w-full lg:w-2/3 md:h-1/2 shadow-xl rounded-xl">
+        <div class="flex flex-col md:flex-row w-full lg:w-2/3  md:h-[420px] shadow-xl rounded-xl">
             <!-- Left Section: Login Form -->
             <div id="form" class="w-full flex flex-col">
                 <form class="flex flex-col w-full gap-2 px-8 py-16">
