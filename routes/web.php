@@ -14,7 +14,9 @@ Route::get('/', function () {
 Route::view('/welcome', 'welcome');
 
 Route::controller(LoginController::class)->group(function () {
-    Route::get('/login', 'index');  // form page
+    Route::get('/login', 'index');      // form page
+    Route::post('/login', 'store');     // form action
+    Route::post('/logout', 'destroy');  // form action
 });
 
 Route::controller(RegisterController::class)->group(function () {

@@ -21,7 +21,8 @@
         <div class="flex flex-col md:flex-row w-full lg:w-2/3  md:h-min-[420px] shadow-xl rounded-xl">
             <!-- Left Section: Login Form -->
             <div id="form" class="w-full flex flex-col">
-                <form class="flex flex-col w-full gap-2 px-8 py-16">
+                <form class="flex flex-col w-full gap-2 px-8 py-16" method="POST" action="/login">
+                    @csrf
                     <p class="text-3xl font-bold text-center mb-5">
                         Log In
                     </p>

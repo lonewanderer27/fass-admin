@@ -34,13 +34,13 @@
             @endguest
 
             @auth
-                <a class="btn btn-sm btn-primary" href="/login">
+                <button class="btn btn-sm btn-error" href="/login" form="logout">
                     Log out
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                          stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
                     </svg>
-                </a>
+                </button>
             @endauth
         </div>
 
@@ -70,16 +70,20 @@
 
             @auth
                 <ul tabindex="0" class="dropdown-content menu z-[1] bg-base-200 p-4 rounded-box shadow w-56 gap-2">
-                    <a class="btn btn-primary btn-sm">
+                    <button class="btn btn-error btn-sm" form="logout">
                         Log out
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                              stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                   d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
                         </svg>
-                    </a>
+                    </button>
                 </ul>
             @endauth
         </div>
     </nav>
+
+    <form id="logout" method="POST" action="/logout" class="hidden">
+        @csrf
+    </form>
 </nav>
