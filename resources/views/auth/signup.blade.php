@@ -49,7 +49,7 @@
                         </svg>
                         <input name="name" class="grow @error('name') input-error @enderror"
                                placeholder="Enter your Name"
-                               value="{{ old('name') }}"/>
+                               value="{{ old('name') }}" required />
                         @error('name')
                         <div class="label">
                             <span class="label-text-alt text-error">{{ $message }}</span>
@@ -68,6 +68,7 @@
                         <input name="email" type="email" class="grow @error('email') input-error @enderror"
                                placeholder="Enter your Email"
                                value="{{ old('email') }}"
+                               required
                         />
                         @error('email')
                         <div class="label">
@@ -86,7 +87,8 @@
                         </svg>
                         <input name="password" type="password" class="grow @error('password') input-error @enderror"
                                placeholder="Enter your Password"
-                               value="{{ old('password') }}"/>
+                               value="{{ old('password') }}"
+                               required />
                         <svg id="eye--icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                              stroke-width="1.5" stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -118,7 +120,8 @@
                         <input name="password_confirmation" type="password"
                                class="grow @error('password_confirmation') input-error @enderror"
                                placeholder="Confirm your Password"
-                               value="{{ old('password_confirmation') }}"/>
+                               value="{{ old('password_confirmation') }}"
+                               required />
                         <svg id="eye--icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                              stroke-width="1.5" stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
