@@ -1,6 +1,8 @@
 <x-layout title="{{$organizer->name}}" :show_navbar="true" :show_heading="true">
     <x-slot:heading>
-        {{ $organizer["name"] }}
+        <span style="view-transition-name: title">
+            {{ $organizer["name"] }}
+        </span>
     </x-slot:heading>
     <div class="p-6 lg:p-8">
         @if($organizer->description)

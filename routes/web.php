@@ -21,10 +21,10 @@ Route::get('/signup', function () {
 });
 
 Route::controller(EventController::class)->group(function () {
-    Route::get('/events', 'show');                  // page
+    Route::get('/events', 'index');                  // page
     Route::get('/events/create', 'create');         // form
     Route::post('/events', 'store');                // form action
-    Route::get('/events/{event}', 'index');         // page
+    Route::get('/events/{event}', 'show');         // page
 });
 
 Route::controller(OrganizerController::class)->group(function () {

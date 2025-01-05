@@ -1,6 +1,13 @@
+<style>
+    #title {
+        view-transition-name: title;
+    }
+</style>
 <x-layout title="Event" :show_navbar="true" :show_heading="true">
     <x-slot:heading>
-        {{ $event["name"] }}
+        <span id="title">
+            {{ $event["name"] }}
+        </span>
     </x-slot:heading>
     <div class="p-6 lg:p-8">
         <p><strong>Description: </strong>{{ $event["description"] }}</p>
