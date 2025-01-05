@@ -87,7 +87,7 @@
                 <p class="text-white font-semibold">
                     Sign up now, fass!
                 </p>
-                <a href="/signup" class="btn btn-outline btn-neutral px-10">
+                <a href="/signup" class="btn btn-outline btn-neutral border-white text-white px-10">
                     Sign Up
                 </a>
             </div>

@@ -27,7 +27,7 @@
                 <p class="text-white font-semibold message-item">
                     Log in and continue your fass journey.
                 </p>
-                <a href="/login" class="btn btn-outline btn-neutral px-10 mt-4 message-item">
+                <a href="/login" class="btn btn-outline btn-neutral px-10 mt-4 message-item border-white text-white">
                     Log In
                 </a>
             </div>
