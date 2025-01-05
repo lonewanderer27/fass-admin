@@ -28,7 +28,7 @@ class LoginController extends Controller
         ]);
 
         // attempt to login the user
-        $can_login = Auth::attempt($attrs);
+        $can_login = Auth::attempt($attrs, $request->get('remember_me') == "on");
 
         if (!$can_login) {
             throw ValidationException::withMessages(

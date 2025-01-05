@@ -26,16 +26,24 @@
                     <p class="text-3xl font-bold text-center mb-5">
                         Log In
                     </p>
-                    <label class="input input-bordered flex items-center gap-2">
-                        <div class="w-20 hidden xs:block">Email</div>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" class="size-6 block xs:hidden">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/>
-                        </svg>
-                        <input id="email" name="email" type="email" class="grow" placeholder="Enter your Email"
-                               required />
-                    </label>
+                    <div>
+                        <label class="input input-bordered flex items-center gap-2">
+                            <div class="w-20 hidden xs:block">Email</div>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                 stroke="currentColor" class="size-6 block xs:hidden">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/>
+                            </svg>
+                            <input id="email" name="email" type="email"
+                                   class="grow @error('password') input-error @enderror" placeholder="Enter your Email"
+                                   required value="{{ @old('email') }}"/>
+                        </label>
+                        @error('email')
+                        <div class="label">
+                            <span class="label-text-alt text-error">{{ $message }}</span>
+                        </div>
+                        @enderror
+                    </div>
                     <label class="input input-bordered flex items-center gap-2">
                         <div class="w-20 hidden xs:block">Password</div>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -44,7 +52,7 @@
                                   d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"/>
                         </svg>
                         <input id="password" name="password" type="password" class="grow"
-                               placeholder="Enter your Password" required />
+                               placeholder="Enter your Password" required/>
                         <svg id="eye--icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                              stroke-width="1.5" stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -61,7 +69,7 @@
                     </label>
                     <label class="label cursor-pointer">
                         <span class="label-text">Remember me</span>
-                        <input id="remember-me" name="remember-me" type="checkbox" class="checkbox" />
+                        <input id="remember-me" name="remember_me" type="checkbox" class="checkbox"/>
                     </label>
                     <div class="flex justify-center mt-5 w-full">
                         <button class="btn w-full xs:w-auto px-10" type="submit">
