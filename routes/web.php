@@ -27,17 +27,18 @@ Route::controller(RegisterController::class)->group(function () {
 Route::controller(EventController::class)->group(function () {
     Route::get('/events', 'index');
     Route::get('/events/create', 'create')->middleware('auth');
-    Route::post('/events', 'store')->middleware('auth');
+    Route::post('/events', 'store')
+        ->middleware(['auth', 'edit-event']);
     Route::get('/events/{event}', 'show');
     Route::patch('/events/{event}', 'update')
         ->middleware('auth')
-        ->can('edit-event', 'event');
+        ->can('update', 'event');
     Route::delete('/events/{event}', 'destroy')
         ->middleware('auth')
-        ->can('edit-event', 'event');
+        ->can('delete', 'event');
     Route::get('/events/{event}/edit', 'edit')
         ->middleware('auth')
-        ->can('edit-event', 'event');
+        ->can('update', 'event');
 });
 
 Route::controller(OrganizerController::class)->group(function () {
