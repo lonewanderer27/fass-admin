@@ -1,4 +1,4 @@
-<x-layout title="Organizers" :show_navbar="true">
+<x-layout title="Organizers" :show_navbar="true" :show_heading="true">
     <x-slot:heading>
         Organizers
     </x-slot:heading>

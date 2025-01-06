@@ -73,11 +73,11 @@ class OrganizerController extends Controller
     public function update(Organizer $org): RedirectResponse
     {
         // validate the request
-        request()->validate([
+        $attrs = request()->validate([
             // third param allows us to exclude the rule of unique to the org id
             // which allows the org name to stay the same
             // in case the user decided to not edit it
-            'name' => ['required',  'unique:organizers,name,' . $org->id, 'min:3'],
+            'name' => ['required', 'unique:organizers,name,' . $org->id, 'min:3'],
             'phone_no' => ['required', 'size:10'],
             'description' => ['nullable'],
             'email' => ['nullable'],
@@ -85,13 +85,12 @@ class OrganizerController extends Controller
             'cover_url' => ['nullable']
         ]);
 
+        dd($attrs);
+
         // TODO: authorize the edit organizer request
 
-        // filter out the null values
-        $filtered_values = array_filter(request()->all(), fn($val) => !is_null($val));
-
         // actually update the organizer
-        $org->updateOrFail($filtered_values);
+        $org->updateOrFail($attrs);
 
         // return and redirect to the organizer page
         return redirect("/organizers/$org->id");
