@@ -20,13 +20,13 @@ class OrganizerController extends Controller
     }
 
     // page: single organizer
-    public function show(Organizer $org): View
+    public function show(Organizer $organizer): View
     {
-        $members = $org->members()->take(3)->get();
-        $events = $org->events()->take(3)->get();
+        $members = $organizer->members()->take(3)->get();
+        $events = $organizer->events()->take(3)->get();
 
         return view('organizers.show', [
-            'organizer' => $org,
+            'organizer' => $organizer,
             'members' => $members,
             'events' => $events
         ]);
@@ -39,10 +39,10 @@ class OrganizerController extends Controller
     }
 
     // form: edit an organizer
-    public function edit(Organizer $org): View
+    public function edit(Organizer $organizer): View
     {
         return view('organizers.edit', [
-            'organizer' => $org
+            'organizer' => $organizer
         ]);
     }
 
@@ -70,14 +70,14 @@ class OrganizerController extends Controller
     }
 
     // action: update an organizer
-    public function update(Organizer $org): RedirectResponse
+    public function update(Organizer $organizer): RedirectResponse
     {
         // validate the request
         $attrs = request()->validate([
             // third param allows us to exclude the rule of unique to the org id
             // which allows the org name to stay the same
             // in case the user decided to not edit it
-            'name' => ['required', 'unique:organizers,name,' . $org->id, 'min:3'],
+            'name' => ['required', 'unique:organizers,name,' . $organizer->id, 'min:3'],
             'phone_no' => ['required', 'size:10'],
             'description' => ['nullable'],
             'email' => ['nullable'],
@@ -88,19 +88,19 @@ class OrganizerController extends Controller
         // TODO: authorize the edit organizer request
 
         // actually update the organizer
-        $org->updateOrFail($attrs);
+        $organizer->updateOrFail($attrs);
 
         // return and redirect to the organizer page
-        return redirect("/organizers/$org->id");
+        return redirect("/organizers/$organizer->id");
     }
 
     // action: delete an organizer
-    public function destroy(Organizer $org): RedirectResponse
+    public function destroy(Organizer $organizer): RedirectResponse
     {
         // TODO: authorize the delete organizer request
 
         // actually delete the organization
-        $org->deleteOrFail();
+        $organizer->deleteOrFail();
 
         // return and redirect to organizers page
         return redirect('/organizers');

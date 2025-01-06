@@ -46,14 +46,15 @@ Route::controller(OrganizerController::class)->group(function () {
     Route::get('/organizers/create', 'create')->middleware('auth');
     Route::post('/organizers', 'store')
         ->middleware(['auth', 'edit-organizer']);
-    Route::get('/organizers/{org}', 'show');
-    Route::delete('/organizers/{org}', 'destroy')
+    Route::get('/organizers/{organizer}', 'show');
+    Route::delete('/organizers/{organizer}', 'destroy')
         ->middleware('auth')
         ->can('delete', 'organizer');
-    Route::patch('/organizers/{org}', 'update')
+    Route::patch('/organizers/{organizer}', 'update')
         ->middleware('auth')
         ->can('update', 'organizer');
-    Route::get('/organizers/{org}/edit', 'edit')
+    Route::get('/organizers/{organizer}/edit', 'edit')
+        ->middleware('auth')
         ->can('update', 'organizer');
 });
 
