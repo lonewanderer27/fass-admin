@@ -14,7 +14,7 @@ Route::get('/', function () {
 Route::view('/welcome', 'welcome');
 
 Route::controller(LoginController::class)->group(function () {
-    Route::get('/login', 'index');      // form page
+    Route::get('/login', 'index')->name('login');      // form page
     Route::post('/login', 'store');     // form action
     Route::post('/logout', 'destroy');  // form action
 });
@@ -25,13 +25,19 @@ Route::controller(RegisterController::class)->group(function () {
 });
 
 Route::controller(EventController::class)->group(function () {
-    Route::get('/events', 'index');                  // page
-    Route::get('/events/create', 'create');         // form
-    Route::post('/events', 'store');                // form action
-    Route::get('/events/{event}', 'show');         // page
-    Route::patch('/events/{event}', 'update');      // form action
-    Route::delete('/events/{event}', 'destroy');    // form action
-    Route::get('/events/{event}/edit', 'edit');
+    Route::get('/events', 'index');
+    Route::get('/events/create', 'create')->middleware('auth');
+    Route::post('/events', 'store')->middleware('auth');
+    Route::get('/events/{event}', 'show');
+    Route::patch('/events/{event}', 'update')
+        ->middleware('auth')
+        ->can('edit-event', 'event');
+    Route::delete('/events/{event}', 'destroy')
+        ->middleware('auth')
+        ->can('edit-event', 'event');
+    Route::get('/events/{event}/edit', 'edit')
+        ->middleware('auth')
+        ->can('edit-event', 'event');
 });
 
 Route::controller(OrganizerController::class)->group(function () {
