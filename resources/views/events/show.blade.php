@@ -20,8 +20,10 @@
                 {{ $event->organizer->name }}
             </a>
         </p>
-        <div class="mt-6 flex items-center gap-x-6">
-            <a class="btn  btn-secondary" href="/events/{{$event->id}}/edit">Edit</a>
-        </div>
+        @can('edit-event', $event)
+            <div class="mt-6 flex items-center gap-x-6">
+                <a class="btn  btn-secondary" href="/events/{{$event->id}}/edit">Edit</a>
+            </div>
+        @endcan
     </div>
 </x-layout>
