@@ -45,7 +45,7 @@
         }
     })
 </script>
-<x-layout title="Events" :show_navbar="true">
+<x-layout title="Events" :show_navbar="true" :show_heading="true">
     <x-slot:heading>
         Events
     </x-slot:heading>

@@ -29,6 +29,9 @@ Route::controller(EventController::class)->group(function () {
     Route::get('/events/create', 'create');         // form
     Route::post('/events', 'store');                // form action
     Route::get('/events/{event}', 'show');         // page
+    Route::patch('/events/{event}', 'update');      // form action
+    Route::delete('/events/{event}', 'destroy');    // form action
+    Route::get('/events/{event}/edit', 'edit');
 });
 
 Route::controller(OrganizerController::class)->group(function () {

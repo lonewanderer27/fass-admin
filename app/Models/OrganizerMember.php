@@ -12,6 +12,7 @@ class OrganizerMember extends Model
     protected $fillable = [
         'user_id',
         'role',
+        'organizer_id'
     ];
     public function user()
     {
