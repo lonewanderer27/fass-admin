@@ -12,8 +12,10 @@
         @if($organizer->email)
             <p><strong>Email:</strong> {{ $organizer["email"] }}</p>
         @endif
-        <div class="mt-6 flex items-center gap-x-6">
-            <a class="btn  btn-secondary" href="/organizers/{{$organizer->id}}/edit">Edit</a>
-        </div>
+        @can('edit-organizer', $organizer)
+            <div class="mt-6 flex items-center gap-x-6">
+                <a class="btn  btn-secondary" href="/organizers/{{$organizer->id}}/edit">Edit</a>
+            </div>
+        @endcan
     </div>
 </x-layout>

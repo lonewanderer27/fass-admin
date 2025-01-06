@@ -42,14 +42,19 @@ Route::controller(EventController::class)->group(function () {
 });
 
 Route::controller(OrganizerController::class)->group(function () {
-    // TODO: Use Route::resource, but we'll specify the action keywords for now since we don't remember it yet.
-    Route::get('/organizers', 'index');             // page
-    Route::get('/organizers/create', 'create');     // form
-    Route::post('/organizers', 'store');            // form action
-    Route::delete('/organizers/{org}', 'destroy');  // form action
-    Route::patch('/organizers/{org}', 'update');    // form
-    Route::get('/organizers/{org}', 'show');        // page
-    Route::get('/organizers/{org}/edit', 'edit');   // form action
+    Route::get('/organizers', 'index');
+    Route::get('/organizers/create', 'create')->middleware('auth');
+    Route::post('/organizers', 'store')
+        ->middleware(['auth', 'edit-organizer']);
+    Route::get('/organizers/{org}', 'show');
+    Route::delete('/organizers/{org}', 'destroy')
+        ->middleware('auth')
+        ->can('delete', 'organizer');
+    Route::patch('/organizers/{org}', 'update')
+        ->middleware('auth')
+        ->can('update', 'organizer');
+    Route::get('/organizers/{org}/edit', 'edit')
+        ->can('update', 'organizer');
 });
 
 if (env('APP_ENV') == "production") {

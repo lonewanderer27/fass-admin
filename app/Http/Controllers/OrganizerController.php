@@ -85,8 +85,6 @@ class OrganizerController extends Controller
             'cover_url' => ['nullable']
         ]);
 
-        dd($attrs);
-
         // TODO: authorize the edit organizer request
 
         // actually update the organizer

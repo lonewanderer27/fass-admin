@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Event;
+use App\Models\Organizer;
 use App\Models\OrganizerMember;
 use App\Models\User;
 use DebugBar\DebugBar;
@@ -32,6 +33,18 @@ class AppServiceProvider extends ServiceProvider
             // fetch the member model of the user
             $member = OrganizerMember::where('user_id', $user->id)
                 ->where('organizer_id', $event->organizer_id)
+                ->where('role', 'admin')->first();
+
+            if ($member) return true;
+            return false;
+        });
+
+        Gate::define('edit-organizer', function(User $user, Organizer $organizer) {
+            // a user can only edit if they are admin of that organizer
+
+            // fetch the member of the user
+            $member = OrganizerMember::where('user_id', $user->id)
+                ->where('organizer_id', $organizer->id)
                 ->where('role', 'admin')->first();
 
             if ($member) return true;
