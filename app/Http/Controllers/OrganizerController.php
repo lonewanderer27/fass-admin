@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ImagineOrganizerDescription;
 use App\Mail\OrganizationCreated;
 use App\Models\Organizer;
 use Illuminate\Http\RedirectResponse;
@@ -9,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
+use function Illuminate\Events\queueable;
 
 class OrganizerController extends Controller
 {
@@ -53,7 +55,7 @@ class OrganizerController extends Controller
     public function store(Request $request): RedirectResponse
     {
         // validate request
-        $request->validate([
+        $attrs = $request->validate([
             'name' => ['required', 'unique:organizers', 'min:3'],
             'phone_no' => ['required', 'size:10'],
             'description' => ['nullable'],
@@ -62,13 +64,16 @@ class OrganizerController extends Controller
             'cover_url' => ['nullable']
         ]);
 
-        // filter out the null values
-        $filtered_values = array_filter($request->all(), fn($val) => !is_null($val));
-
         // create the new organizer
-        $organizer = Organizer::create($filtered_values);
+        $organizer = Organizer::create($attrs);
 
-        Mail::to(Auth::user()->email)->send(new OrganizationCreated($organizer));
+        if (!$organizer->description) {
+            // if there is no bio, let's imagine what is the description should be!
+            ImagineOrganizerDescription::dispatch($organizer);
+        }
+
+        // queue the email
+        Mail::to(Auth::user()->email)->queue(new OrganizationCreated($organizer));
 
         // return and redirect to organizer page
         return redirect("/organizers/$organizer->id");
