@@ -46,8 +46,7 @@ Route::controller(EventController::class)->group(function () {
 Route::controller(OrganizerController::class)->group(function () {
     Route::get('/organizers', 'index');
     Route::get('/organizers/create', 'create')->middleware('auth');
-    Route::post('/organizers', 'store')
-        ->middleware(['auth', 'can:edit-organizer,organizer']);
+    Route::post('/organizers', 'store')->middleware(['auth']);
     Route::get('/organizers/{organizer}', 'show');
     Route::delete('/organizers/{organizer}', 'destroy')
         ->middleware('auth')
