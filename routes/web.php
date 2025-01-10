@@ -4,6 +4,8 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrganizerController;
 use App\Http\Controllers\RegisterController;
+use App\Mail\OrganizationCreated;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 
@@ -45,7 +47,7 @@ Route::controller(OrganizerController::class)->group(function () {
     Route::get('/organizers', 'index');
     Route::get('/organizers/create', 'create')->middleware('auth');
     Route::post('/organizers', 'store')
-        ->middleware(['auth', 'edit-organizer']);
+        ->middleware(['auth', 'can:edit-organizer,organizer']);
     Route::get('/organizers/{organizer}', 'show');
     Route::delete('/organizers/{organizer}', 'destroy')
         ->middleware('auth')
@@ -56,6 +58,15 @@ Route::controller(OrganizerController::class)->group(function () {
     Route::get('/organizers/{organizer}/edit', 'edit')
         ->middleware('auth')
         ->can('update', 'organizer');
+});
+
+Route::get('/mails/create/organization', function () {
+
+    return 'Email has been sent!';
+});
+
+Route::get('/mails/organization-created', function () {
+    return new OrganizationCreated();
 });
 
 if (env('APP_ENV') == "production") {

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrganizationCreated;
 use App\Models\Organizer;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
 class OrganizerController extends Controller
@@ -64,6 +67,8 @@ class OrganizerController extends Controller
 
         // create the new organizer
         $organizer = Organizer::create($filtered_values);
+
+        Mail::to(Auth::user()->email)->send(new OrganizationCreated());
 
         // return and redirect to organizer page
         return redirect("/organizers/$organizer->id");
