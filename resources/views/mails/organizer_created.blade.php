@@ -1,6 +1,4 @@
 @props([
-    'name' => 'Adamson Computer Science Society',
-    'link' => 'http://localhost/events/create',
     'support_email' => 'support@fass.com'
 ])
 
@@ -77,9 +75,9 @@
     <div class="email-box">
         <h1>🎉 Organization Created!</h1>
         <p>
-            Your organization, <strong>{{ $name }}</strong>, has been successfully created. You can now start creating and managing events.
+            Your organization, <strong>{{ $organizer->name }}</strong>, has been successfully created. You can now start creating and managing events.
         </p>
-        <a href="{{ $link }}" class="button">Create Events Now</a>
+        <a href="{{ url("/organizers/" . $organizer->id) }}" class="button">Create Events Now</a>
         <div class="footer">
             <p>This is an auto-generated email. Please do not reply to this email.</p>
             <p>

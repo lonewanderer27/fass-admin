@@ -68,7 +68,7 @@ class OrganizerController extends Controller
         // create the new organizer
         $organizer = Organizer::create($filtered_values);
 
-        Mail::to(Auth::user()->email)->send(new OrganizationCreated());
+        Mail::to(Auth::user()->email)->send(new OrganizationCreated($organizer));
 
         // return and redirect to organizer page
         return redirect("/organizers/$organizer->id");
