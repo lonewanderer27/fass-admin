@@ -28,6 +28,7 @@ Route::controller(RegisterController::class)->group(function () {
 
 Route::controller(EventController::class)->group(function () {
     Route::get('/events', 'index');
+    Route::get('/events/{event}/scan', 'scan');
     Route::get('/events/create', 'create')->middleware('auth');
     Route::post('/events', 'store')
         ->middleware(['auth', 'edit-event']);

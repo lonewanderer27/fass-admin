@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
+use Inertia\Inertia;
 
 class EventController extends Controller
 {
@@ -29,6 +30,14 @@ class EventController extends Controller
         return view('events.show', [
             'event' => $event,
             'organizer' =>  $event->organizer
+        ]);
+    }
+
+    public function scan(Event $event)
+    {
+        Inertia::setRootView('events/scan.index');
+        return Inertia::render('Scan', [
+            'event' => $event
         ]);
     }
 
