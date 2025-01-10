@@ -10,6 +10,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "gemini-api-php/laravel": "^0.3.0",
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
         "sqids/sqids": "^0.4.1"
